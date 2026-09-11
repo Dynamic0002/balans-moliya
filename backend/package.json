@@ -1,0 +1,25 @@
+{
+  "name": "meatcity-executive-dashboard",
+  "version": "1.0.0",
+  "description": "MEAT CITY Ta'sischilar Dashboardi - Backend & API Gateway",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "1c",
+    "executive-dashboard",
+    "finance",
+    "pnl",
+    "meat-city"
+  ],
+  "author": "Antigravity",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "localtunnel": "^2.0.2"
+  }
+}
