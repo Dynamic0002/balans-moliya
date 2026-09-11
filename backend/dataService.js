@@ -90,7 +90,7 @@ const initialDefaultData = {
     {
       month: 'Aprel 2026',
       revenue: 26239446668.29,
-      cogs: 1347119945.89,
+      cogs: 13347119945.89,
       gross_profit: 12892326722.00,
       gross_margin_pct: 49.13,
       net_profit: 5309910723.00,

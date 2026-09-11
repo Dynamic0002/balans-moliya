@@ -1,0 +1,361 @@
+/* Custom styles and kinetic micro-interactions for MEAT CITY ERP 2.0 */
+
+body {
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   1. CUSTOM SCROLLBAR (Sleek Dark Theme)
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0f19;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e11d48;
+}
+
+/* ==========================================================================
+   2. KEYFRAME ANIMATIONS (Kinetic Motion & Micro-Interactions)
+   ========================================================================== */
+
+/* Subtle Text Bounce / Jiggle on Click */
+@keyframes textJiggle {
+  0% { transform: scale(1) translateY(0); }
+  25% { transform: scale(0.95) translateY(2px); }
+  50% { transform: scale(1.04) translateY(-1.5px); }
+  75% { transform: scale(0.98) translateY(0.5px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+.text-jiggle {
+  animation: textJiggle 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Click Ripple Wave */
+@keyframes rippleExpand {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}
+
+.click-ripple {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(244, 63, 94, 0.7) 0%, rgba(225, 29, 72, 0.3) 50%, transparent 80%);
+  animation: rippleExpand 0.6s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+  z-index: 9999;
+}
+
+/* Section Smooth Fade & Glide Up */
+@keyframes sectionEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.995);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.animate-section-enter {
+  animation: sectionEnter 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Modal Spring Pop-in */
+@keyframes modalPopIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(25px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.015) translateY(-3px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-content-pop {
+  animation: modalPopIn 0.38s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Shimmer Light Reflection (for badges, cards, logos) */
+@keyframes shimmerGlow {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.badge-shimmer {
+  background: linear-gradient(90deg, rgba(225,29,72,0.1) 0%, rgba(255,255,255,0.25) 50%, rgba(225,29,72,0.1) 100%);
+  background-size: 200% 100%;
+  animation: shimmerGlow 3s infinite linear;
+}
+
+/* Breathing Neon Aura */
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(225, 29, 72, 0.3), inset 0 0 10px rgba(225, 29, 72, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(225, 29, 72, 0.65), inset 0 0 15px rgba(225, 29, 72, 0.35);
+  }
+}
+
+.neon-glow {
+  animation: neonPulse 2.5s infinite ease-in-out;
+}
+
+/* Rotating Cyber Ring in Splash */
+@keyframes spinRing {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spinRing 8s linear infinite;
+}
+
+/* Splash Screen Fade Out */
+@keyframes splashFadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.05);
+    visibility: hidden;
+  }
+}
+
+.splash-fade-out {
+  animation: splashFadeOut 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================================================
+   3. INTERACTIVE BUTTONS & TABS (Kinetic Micro-Interactions)
+   ========================================================================== */
+
+/* Universal Button Kinetic Behavior */
+button, .nav-tab, .btn-action {
+  position: relative;
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.18s ease, 
+              background-color 0.18s ease, 
+              border-color 0.18s ease;
+  user-select: none;
+}
+
+button:hover, .nav-tab:hover {
+  transform: translateY(-1.5px);
+}
+
+button:active, .nav-tab:active {
+  transform: translateY(1.5px) scale(0.97) !important;
+}
+
+/* Nav Tab Active Kinetic Glow */
+.nav-tab.bg-rose-600 {
+  box-shadow: 0 4px 15px rgba(225, 29, 72, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.nav-tab i {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-tab:hover i {
+  transform: scale(1.2) rotate(-5deg);
+  color: #fb7185;
+}
+
+/* Card Hover Elevation & Subtle Glow */
+.kpi-card, .metric-card, .dashboard-card {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.25s ease, 
+              border-color 0.25s ease;
+}
+
+.kpi-card:hover, .metric-card:hover, .dashboard-card:hover {
+  transform: translateY(-3.5px);
+  box-shadow: 0 12px 28px -5px rgba(0, 0, 0, 0.6), 0 0 15px rgba(225, 29, 72, 0.15);
+  border-color: rgba(225, 29, 72, 0.4) !important;
+}
+
+/* Table Row Interactive Highlight (Scoped) */
+.dark-table tbody tr,
+#dashboard-tbody tr {
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.dark-table tbody tr:hover,
+#dashboard-tbody tr:hover {
+  background-color: rgba(31, 41, 55, 0.5) !important;
+  transform: translateX(2px);
+}
+
+/* 1C Light Theme Tables & Modals (Kinetic & Modern) */
+.table-1c-light tbody tr,
+#nom-catalog-table-body tr,
+#pur-doc-items-tbody tr,
+#cp-picker-tbody tr,
+#nomen-picker-tbody tr {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: relative;
+}
+
+.table-1c-light tbody tr:hover,
+#nom-catalog-table-body tr:hover,
+#pur-doc-items-tbody tr:hover,
+#cp-picker-tbody tr:hover,
+#nomen-picker-tbody tr:hover {
+  background: linear-gradient(90deg, rgba(254, 243, 199, 0.6) 0%, rgba(255, 251, 235, 0.9) 100%) !important;
+  transform: translateX(3px) !important;
+  box-shadow: inset 3px 0 0 #f59e0b, 0 3px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+.table-1c-light tbody tr.selected-row,
+#nom-catalog-table-body tr.selected-row {
+  background: linear-gradient(90deg, #fef3c7 0%, #fffbeb 100%) !important;
+  border-left: 4px solid #d97706 !important;
+  box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.3), 0 4px 14px rgba(217, 119, 6, 0.12) !important;
+}
+
+/* 1C Modal Kinetic Spring Animation */
+.modal-1c-spring {
+  animation: modal1cSpring 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modal1cSpring {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Modern Button & Card Kinetic Micro-Interactions */
+.btn-kinetic {
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.btn-kinetic:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+}
+.btn-kinetic:active {
+  transform: translateY(1px) scale(0.96) !important;
+}
+
+.category-card-kinetic {
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.category-card-kinetic:hover {
+  transform: translateX(5px);
+}
+.category-card-kinetic:active {
+  transform: scale(0.97);
+}
+
+/* Input Focus Glow */
+input:focus, select:focus, textarea:focus {
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.25);
+}
+
+/* Numbers Tabular */
+.font-mono {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Sound indicator ripple */
+.sound-active-ring {
+  animation: neonPulse 1.8s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   4. PRINT STYLING
+   ========================================================================== */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  header, footer, button, .tab-btn, #app-splash-screen {
+    display: none !important;
+  }
+
+  .bg-gray-900, .bg-gray-950, .bg-\[\#0B0F19\] {
+    background-color: #ffffff !important;
+    border-color: #e5e7eb !important;
+    color: #000000 !important;
+  }
+
+  .text-white, .text-gray-200, .text-gray-300, .text-gray-400 {
+    color: #000000 !important;
+  }
+
+  .shadow-lg, .shadow-md, .shadow-2xl {
+    box-shadow: none !important;
+  }
+}
+
+/* ==========================================================================
+   LEFT SIDEBAR VERTICAL NAVIGATION STYLES
+   ========================================================================== */
+.sidebar-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.2);
+  border-radius: 4px;
+}
+.sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.4);
+}
+
+#main-sidebar .nav-tab {
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+#main-sidebar .nav-tab::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: transparent;
+  transition: background-color 0.2s ease;
+}
+
+#main-sidebar .nav-tab:hover::before {
+  background: #f43f5e;
+}
